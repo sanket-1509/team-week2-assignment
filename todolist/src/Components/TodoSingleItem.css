@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.todoitem {
+  display: flex;
+  margin: 1rem;
+  font-size: larger;
+  justify-content: center;
+  background-color: coral;
+}
+
+.todotext {
+  background-color: coral;
+  margin: 0rem 4rem;
+  width: 40rem;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.edit {
+  width: 4rem;
+  background-color: rgb(237, 240, 185);
+}
+.disabled{
+  display: none;
+}
+
+.edit:hover{
+  cursor: pointer;
+}
+
+.delete {
+  margin-left: 1rem;
+  width: 4rem;
+  background-color: rgb(222, 188, 188);
+}
+
+.delete:hover{
+  cursor: pointer;
+}
+
+.status {
+  margin-left: 1rem;
+  width: 6rem;
+  background-color: rgb(175, 230, 175);
+}
+
+.status:hover{
+  cursor: pointer;
+}
+
+@media only screen and (max-width:600px){
+  .todoitem {
+  display: flex;
+  margin: 1rem;
+  font-size: 0.9rem;
+  justify-content: center;
+  background-color: coral;
+  height: 1.5rem;
+}
+.todotext {
+  background-color: coral;
+  margin: 0rem 2rem;
+  width: 30rem;
+}
+
+.edit {
+  width: 2rem;
+  padding: 2px;
+  font-size: 0.8rem;
+  background-color: rgb(237, 240, 185);
+  /* background-color: aqua; */
+}
+.delete{
+  margin-left: 1rem;
+   width: 4rem;
+  padding: 2px;
+  font-size: 0.7rem;
+  background-color: rgb(222, 188, 188);
+}
+
+.status {
+  margin-left: 1rem;
+   width: 5rem;
+  padding: 1px;
+  font-size: 0.5rem;
+  background-color: rgb(175, 230, 175);
+}
+
+}

@@ -1,0 +1,74 @@
+* {
+margin: 0;
+padding: 0;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+}
+
+.taskinput{
+    width: 25rem;
+    height: 2rem;
+    background-color: antiquewhitex ;
+    border: 1.5px solid black;
+    border-radius: 4px;
+}
+.add-btn{
+    margin-left: 1rem;
+    width: 5rem;
+    height: 2rem;
+    background-color: rgb(198, 214, 218);
+    border-radius: 4px;
+}
+
+.charCount {
+  font-size: 0.8rem;
+  color: gray;
+  margin-top: 4px;
+    margin-left: 0.4rem;
+}
+.exceed {
+  font-size: 1rem;
+  color: white;
+  margin-top: 4px;
+    margin-left: 0.4rem;
+    background-color: red;
+}
+
+.dropdown{
+    margin-left: 1rem;
+    width: 5rem;
+    height: 2rem;
+    background-color: rgb(159, 199, 128);
+    border-radius: 4px;
+}
+
+@media only screen and (max-width:600px) {
+  .dropdown{
+    margin-left: 1rem;
+    width: 3rem;
+    font-size:x-small;
+    height: 1.5rem;
+    background-color: rgb(159, 199, 128);
+    border-radius:2px;
+}
+
+.add-btn{
+    margin-left: 1rem;
+    width: 5rem;
+    height: 1.5rem;
+    background-color: rgb(198, 214, 218);
+    border-radius: 2px;
+    font-size: x-small;
+}
+  
+.taskinput{
+    width: 20rem;
+    height: 1.5rem;
+    background-color: antiquewhitex ;
+    border: 1.5px solid black;
+    border-radius: 4px;
+}
+}

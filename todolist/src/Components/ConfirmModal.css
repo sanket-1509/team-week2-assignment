@@ -1,0 +1,44 @@
+/* ConfirmModal.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 3rem;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  z-index: 10001;
+}
+
+.modalbtn {
+  width: 4rem;
+  background-color: rgb(237, 240, 185);
+  margin: 1rem 0.5rem;
+  /* border: none; */
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+.modalbtn:hover {
+  cursor: pointer;
+}
