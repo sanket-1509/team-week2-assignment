@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import "./TodoInput.css";
+import { useSelector } from "react-redux";
 
-const TodoInput = ({ task, setTask, handletaskChange, handletaskAdd ,taskFilter, setTaskFilter}) => {
-  
+const TodoInput = ({
+  task,
+  setTask,
+  handletaskChange,
+  handletaskAdd,
+  taskFilter,
+  setTaskFilter,
+}) => {
+  const editActive = useSelector((state) => state.editTaskStatus.editActive);
+console.log(editActive)
   return (
     <>
       <div className="input">
@@ -13,7 +22,11 @@ const TodoInput = ({ task, setTask, handletaskChange, handletaskAdd ,taskFilter,
           value={task.taskInfo}
           maxLength={50}
         />
-              <div className={`charCount ${task.taskInfo.length==50 ?"exceed":""}`}>{task.taskInfo.length}/50</div>
+        <div
+          className={`charCount ${task.taskInfo.length === 50 ? "exceed" : ""}`}
+        >
+          {task.taskInfo.length}/50
+        </div>
         <button
           className="add-btn"
           onClick={() => {
@@ -22,12 +35,13 @@ const TodoInput = ({ task, setTask, handletaskChange, handletaskAdd ,taskFilter,
             }
           }}
         >
-          Add Task
+          {editActive?"Save Edit":"Add Task"}
         </button>
-        <select className="dropdown"
-        value={taskFilter}
+        <select
+          className="dropdown"
+          value={taskFilter}
           onChange={(e) => {
-            console.log("taskfilter",e.target.value)
+            console.log("taskfilter", e.target.value);
             setTaskFilter(e.target.value);
           }}
         >
@@ -36,7 +50,6 @@ const TodoInput = ({ task, setTask, handletaskChange, handletaskAdd ,taskFilter,
           <option value={"Completed"}>Completed</option>
         </select>
       </div>
-
     </>
   );
 };

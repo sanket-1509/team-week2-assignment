@@ -1,11 +1,10 @@
-// src/components/ConfirmModal.js
 import React from 'react';
 import Modal from 'react-modal';
 import './ConfirmModal.css'
 
-Modal.setAppElement('#root'); // for accessibility
+Modal.setAppElement('#root');
 
-const ConfirmModal = ({ isOpen, onRequestClose, onConfirm, message, index }) => {
+const ConfirmModal = ({ isOpen, onRequestClose, onConfirm, message }) => {
   return (
     <Modal
       isOpen={isOpen}
@@ -13,7 +12,7 @@ const ConfirmModal = ({ isOpen, onRequestClose, onConfirm, message, index }) => 
       className="modal"
       overlayClassName="overlay"
     >
-      <h2>Confirmation {index}</h2>
+      <h2>Confirmation</h2>
       <p>{message || "Are you sure you want to proceed?"}</p>
       <button className='modalbtn' onClick={onConfirm}>Yes</button>
       <button className='modalbtn' onClick={onRequestClose}>No</button>

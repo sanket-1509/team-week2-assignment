@@ -4,8 +4,14 @@ import TodoInput from "./Components/TodoInput";
 import TodoOutput from "./Components/TodoOutput";
 import TodoContext from "./Components/TodoContext";
 import ConfirmModal from "./Components/ConfirmModal";
+import { useDispatch } from "react-redux";
+import {
+  changeStatusToActive,
+  changeStatusToInactive,
+} from "./redux/slices/editTaskSlice";
 
 function App() {
+  const dispatch = useDispatch();
   const [task, setTask] = useState({
     taskInfo: "",
     state: "pending",
@@ -27,7 +33,7 @@ function App() {
   // },[])
 
   useEffect(() => {
-    if (hasLoadedFromLocalStorage.current === false) {
+    if (!hasLoadedFromLocalStorage.current) {
       const savedTasks = localStorage.getItem("tasks");
       const parsedTask = JSON.parse(savedTasks);
       if (parsedTask) {
@@ -36,15 +42,6 @@ function App() {
       hasLoadedFromLocalStorage.current = true;
     } else localStorage.setItem("tasks", JSON.stringify(taskList));
   }, [taskList]);
-
-  // useEffect(()=>{
-  // },[taskList])
-
-  //   useEffect(() => {
-  //     if (hasLoadedFromLocalStorage.current) {
-  //       localStorage.setItem("tasks", JSON.stringify(taskList));
-  //     }
-  //   }, [taskList]);
 
   const handletaskChange = (e) => {
     setTask({ ...task, taskInfo: e.target.value });
@@ -56,6 +53,7 @@ function App() {
       updatedTasks[editIndex] = t;
       setTaskList(updatedTasks);
       setEditIndex(null);
+      dispatch(changeStatusToInactive());
     } else {
       setTaskList([...taskList, t]);
     }
@@ -66,14 +64,9 @@ function App() {
     });
   };
 
-  // const handletaskAdd = (t) => {
-  //   console.log(t);
-  //   setTaskList([...taskList, t]);
-  //   setTask({ taskInfo: "", state: "pending" });
-  //   console.log(taskList);
-  // };
 
   const handleEdit = (ind) => {
+    dispatch(changeStatusToActive());
     console.log("edit index", ind);
     const selectedTask = taskList[ind];
     setTask(selectedTask);
@@ -92,13 +85,6 @@ function App() {
     setTaskList(updatedTaskList);
     setIsModalOpen(false);
   };
-
-  // const handleDelete = (ind) => {
-  //   const updatedTaskList = taskList.filter((task, index) => ind !== index);
-  //   setTaskList(updatedTaskList);
-  //   console.log("delete index", ind);
-  //   console.log("updatedTaskList", updatedTaskList);
-  // };
 
   const handleStatus = (ind) => {
     const updatedTaskList = [...taskList];
@@ -128,10 +114,9 @@ function App() {
           setTaskFilter,
         }}
       >
-        <TodoOutput />
+        <TodoOutput/>
       </TodoContext.Provider>
       <ConfirmModal
-        index = {deleteIndex}
         isOpen={isModalOpen}
         onRequestClose={() => setIsModalOpen(false)}
         onConfirm={confirmDelete}

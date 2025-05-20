@@ -27,7 +27,7 @@
   background-color: rgb(237, 240, 185);
 }
 .disabled{
-  display: none;
+  visibility: hidden;
 }
 
 .edit:hover{
